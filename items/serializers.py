@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ItemImage, Users ,LostItem, FoundItem, Category
+from .models import ItemImage,  LostItem, FoundItem, Category
 
 
 
@@ -19,3 +19,12 @@ class FoundItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = FoundItem
         fields = '__all__'
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name']
+
+
+
+s

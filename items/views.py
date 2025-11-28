@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets,status
 from rest_framework.response import Response
 from .models import ItemImage, LostItem, FoundItem, Category
-from .serializers import ItemImageSerializer, LostItemSerializer, FoundItemSerializer
+from .serializers import CategorySerializer, ItemImageSerializer, LostItemSerializer, FoundItemSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import filters
 
@@ -40,7 +40,7 @@ class FoundItemViewSet(viewsets.ModelViewSet):
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
-    serializer_class = serializers.ModelSerializer
+    serializer_class = CategorySerializer
 
     class Meta:
         model = Category
