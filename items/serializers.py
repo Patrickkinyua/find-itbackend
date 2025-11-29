@@ -27,4 +27,4 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 
-s
+
