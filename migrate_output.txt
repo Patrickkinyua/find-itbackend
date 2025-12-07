@@ -1,0 +1,80 @@
+Operations to perform:
+  Apply all migrations: accounts, admin, auth, contenttypes, items, sessions
+Running migrations:
+  Applying accounts.0002_alter_user_managers_remove_user_location_and_more...Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\find-itbackend\manage.py", line 22, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\hp\Desktop\find-itbackend\manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\__init__.py", line 436, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\base.py", line 416, in run_from_argv
+    self.execute(*args, **cmd_options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\base.py", line 460, in execute
+    output = self.handle(*args, **options)
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\base.py", line 107, in wrapper
+    res = handle_func(*args, **kwargs)
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\commands\migrate.py", line 353, in handle
+    post_migrate_state = executor.migrate(
+        targets,
+    ...<3 lines>...
+        fake_initial=fake_initial,
+    )
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\migrations\executor.py", line 135, in migrate
+    state = self._migrate_all_forwards(
+        state, plan, full_plan, fake=fake, fake_initial=fake_initial
+    )
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\migrations\executor.py", line 167, in _migrate_all_forwards
+    state = self.apply_migration(
+        state, migration, fake=fake, fake_initial=fake_initial
+    )
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\migrations\executor.py", line 255, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\migrations\migration.py", line 132, in apply
+    operation.database_forwards(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.app_label, schema_editor, old_state, project_state
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\migrations\operations\fields.py", line 110, in database_forwards
+    schema_editor.add_field(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        from_model,
+        ^^^^^^^^^^^
+        field,
+        ^^^^^^
+    )
+    ^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\schema.py", line 326, in add_field
+    self._remake_table(model, create_field=field)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\schema.py", line 152, in _remake_table
+    self.effective_default(create_field)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\base\schema.py", line 490, in effective_default
+    return field.get_db_prep_save(self._effective_default(field), self.connection)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1012, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1683, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1661, in get_prep_value
+    value = super().get_prep_value(value)
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1537, in get_prep_value
+    return self.to_python(value)
+           ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\fields\__init__.py", line 1622, in to_python
+    parsed = parse_datetime(value)
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\utils\dateparse.py", line 114, in parse_datetime
+    return datetime.datetime.fromisoformat(value)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+TypeError: fromisoformat: argument must be str
