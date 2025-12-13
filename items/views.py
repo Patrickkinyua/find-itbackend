@@ -5,6 +5,8 @@ from .models import ItemImage, LostItem, FoundItem, Category
 from .serializers import CategorySerializer, ItemImageSerializer, LostItemSerializer, FoundItemSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import filters
+from rest_framework.views import APIView
+from items.services.matching_service import match_found_to_lost
 
 from items import serializers
 
@@ -46,3 +48,25 @@ class CategoryViewSet(viewsets.ModelViewSet):
         model = Category
         fields = ['id', 'name']
 
+class FoundItemMatchView(APIView):
+    def get(self, request, pk):
+        try:
+            found_item = FoundItem.objects.get(pk=pk)
+        except FoundItem.DoesNotExist:
+            return Response(
+                {"detail": "Found item not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        matches = match_found_to_lost(found_item)
+
+        response = [
+            {
+                "lost_item_id": m["lost_item"].id,
+                "title": m["lost_item"].title,
+                "score": m["score"]
+            }
+            for m in matches
+        ]
+
+        return Response(response, status=status.HTTP_200_OK)
